@@ -1,4 +1,4 @@
-NAME = skeleton
+NAME = push_swap
 
 # Compiler
 CC = clang
