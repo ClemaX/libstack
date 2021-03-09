@@ -18,6 +18,12 @@ LDFLAGS = -g3
 
 SRCS = $(addprefix $(SRCDIR)/,\
 	main.c\
+	stack_iter.c\
+	stack_push.c\
+	stack_reverse_rotate.c\
+	stack_rotate.c\
+	stack_swap.c\
+	stack.c\
 )
 
 OBJS = $(SRCS:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
