@@ -4,7 +4,13 @@
 #include <stdlib.h> // using malloc, free, size_t
 #include <unistd.h> // using write, read
 
-typedef char	t_stack_val;
+#include <limits.h>
+
+#define STACK_VAL_MAX CHAR_MAX
+#define STACK_VAL_MIN CHAR_MIN
+
+typedef char			t_stack_val;
+typedef unsigned char	t_ustack_val;
 
 typedef struct	s_stack
 {
