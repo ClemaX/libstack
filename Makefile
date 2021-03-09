@@ -1,8 +1,8 @@
-NAME = push_swap
+NAME = libpushswap
 
 # Compiler
 CC = clang
-LD = clang
+AR = ar
 
 # Paths
 SRCDIR=src
@@ -12,12 +12,11 @@ OBJDIR=obj
 BINDIR=.
 
 # Flags
-CFLAGS = -Wall -Wextra -I$(INCDIR) -g3
+CFLAGS = -Wall -Wextra -I$(INCDIR)# -g3
 DFLAGS = -MT $@ -MMD -MP -MF $(OBJDIR)/$*.d
-LDFLAGS = -g3
+ARFLAGS = rcus
 
 SRCS = $(addprefix $(SRCDIR)/,\
-	main.c\
 	stack_iter.c\
 	stack_push.c\
 	stack_reverse_rotate.c\
@@ -30,7 +29,7 @@ OBJS = $(SRCS:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 DEPS = $(OBJS:.o=.d)
 
 COMPILE.c = $(CC) $(DFLAGS) $(CFLAGS) -c
-COMPILE.o = $(LD) $(LDFLAGS)
+COMPILE.o = $(AR) $(ARFLAGS)
 
 all: $(BINDIR)/$(NAME)
 
@@ -51,8 +50,8 @@ include $(wildcard $(DEPS))
 
 # Binaries
 $(BINDIR)/$(NAME): $(OBJS) | $(BINDIR)
-	@echo "LD $@"
-	$(COMPILE.o) $^ -o $@ $(LDLIBS)
+	@echo "AR $@"
+	$(COMPILE.o) $@ $^
 
 clean:
 	@echo "RM $(OBJDIR)"
