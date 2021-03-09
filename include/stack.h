@@ -61,6 +61,14 @@ void	stack_riter(t_stack const*top, void (*fun)(t_stack_val));
 void	stack_push(t_stack **top, t_stack *elem);
 
 /**
+ * @brief Push an element the bottom of the stack.
+ *
+ * @param top	The stack's top element.
+ * @param elem	The element to push on top of the stack.
+ */
+void	stack_push_back(t_stack **top, t_stack *elem);
+
+/**
  * @brief Pop an element from the top of the stack.
  *
  * @param top		The stack's top element.

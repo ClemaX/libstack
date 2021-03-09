@@ -23,6 +23,26 @@ void	stack_push(t_stack **top, t_stack *elem)
 	}
 }
 
+void	stack_push_back(t_stack **top, t_stack *elem)
+{
+	if (elem)
+	{
+		if (*top) // { old_top -> old_top ...}
+		{
+			elem->next = *top; // { elem -> old_top -> old_top ... }
+			elem->prev = (*top)->prev; // { old_top <- elem -> old_top -> old_top ... }
+			(*top)->prev = elem; // { old_top <- elem <- old_top <- elem }
+			elem->prev->next = elem;
+		}
+		else
+		{
+			*top = elem;
+			elem->prev = elem; // { elem <- elem ... }
+			elem->next = elem; // { elem -> elem ... }
+		}
+	}
+}
+
 t_stack	*stack_pop(t_stack **top)
 {
 	t_stack	*const old_top = *top;
