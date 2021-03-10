@@ -1,5 +1,5 @@
 # C/CPP Binaries
-libpushswap
+libstack.a
 obj/
 *.out
 *.o

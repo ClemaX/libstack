@@ -1,4 +1,4 @@
-NAME = libpushswap
+NAME = libstack.a
 
 # Compiler
 CC = clang
