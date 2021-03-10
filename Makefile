@@ -55,7 +55,7 @@ include $(wildcard $(DEPS))
 
 # Binaries
 $(BINDIR)/$(NAME): $(OBJS) | $(BINDIR)
-	@echo "AR $@ $?"
+	@echo "AR $@ $(notdir $?)"
 	$(COMPILE.o) $@ $?
 
 # Remove temporary objects
