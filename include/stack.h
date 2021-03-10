@@ -69,6 +69,17 @@ void	stack_push(t_stack **top, t_stack *elem);
 void	stack_push_back(t_stack **top, t_stack *elem);
 
 /**
+ * @brief Load a stack from a NULL-terminated C-string array.
+ *
+ * The digits are converted to t_stack_val.
+ *
+ * @param values	The NULL-terminated C-string array.
+ * @return			A pointer to the stack's top element,
+ * or NULL in case of error.
+ */
+t_stack	*stack_load(char const **values);
+
+/**
  * @brief Pop an element from the top of the stack.
  *
  * @param top		The stack's top element.

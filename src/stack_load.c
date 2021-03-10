@@ -1,6 +1,21 @@
 #include <stack.h>
 
-t_stack_val     stack_eval(char const **str)
+static size_t	ft_strlen(const char *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i++])
+		;
+	return (i);
+}
+
+static ssize_t	ft_puts(int fd, const char *str)
+{
+	return (write(fd, str, ft_strlen(str)));
+}
+
+t_stack_val		stack_eval(char const **str)
 {
 	t_ustack_val	value;
 	t_stack_val		sign;
@@ -15,7 +30,7 @@ t_stack_val     stack_eval(char const **str)
 	return (value);
 }
 
-t_stack *stack_load(char const **values)
+t_stack			*stack_load(char const **values)
 {
 	char const		*current;
 	t_ustack_val	value;
@@ -28,13 +43,15 @@ t_stack *stack_load(char const **values)
 		value = stack_eval(&current);
 		if (*current)
 		{
-			dprintf(2, "stack_load: Invalid argument: '%s'\n", current);
+			ft_puts(2, "stack_load: Invalid argument: ");
+			ft_puts(2, current);
+			write (2, "\n", 1);
 			stack_clear(&stack);
 			return (stack);
 		}
 		if (!(new_elem = stack_new(value)))
 		{
-			perror("stack_new");
+			ft_puts(2, "stack_load: Could not allocate memory!\n");
 			stack_clear(&stack);
 			return (stack);
 		}
