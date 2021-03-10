@@ -12,8 +12,9 @@ OBJDIR=obj
 BINDIR=.
 
 # Flags
-CFLAGS = -Wall -Wextra -I$(INCDIR)# -g3
+CFLAGS = -Wall -Wextra -I$(INCDIR)
 DFLAGS = -MT $@ -MMD -MP -MF $(OBJDIR)/$*.d
+# r: Replace or add archived object, c: Silence archive creation, u: Update only if newer, s: Index objects
 ARFLAGS = rcus
 
 SRCS = $(addprefix $(SRCDIR)/,\
@@ -50,8 +51,8 @@ include $(wildcard $(DEPS))
 
 # Binaries
 $(BINDIR)/$(NAME): $(OBJS) | $(BINDIR)
-	@echo "AR $@"
-	$(COMPILE.o) $@ $^
+	@echo "AR $@ $?"
+	$(COMPILE.o) $@ $?
 
 clean:
 	@echo "RM $(OBJDIR)"
