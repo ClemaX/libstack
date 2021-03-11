@@ -4,20 +4,7 @@
 #include <stdlib.h> // using malloc, free, size_t
 #include <unistd.h> // using write, read
 
-#include <limits.h>
-
-#define STACK_VAL_MAX CHAR_MAX
-#define STACK_VAL_MIN CHAR_MIN
-
-typedef char			t_stack_val;
-typedef unsigned char	t_ustack_val;
-
-typedef struct	s_stack
-{
-	struct s_stack	*next;
-	struct s_stack	*prev;
-	t_stack_val		val;
-}				t_stack;
+#include <stack_def.h>
 
 /**
  * @brief Allocate a new stack element on the heap.
@@ -86,94 +73,5 @@ t_stack	*stack_load(char const **values);
  * @return			A pointer to the popped element.
  */
 t_stack	*stack_pop(t_stack **top);
-
-/**
- * @brief Swap a's topmost elements.
- * @param a	The top element of the a stack.
- * @param b The top element of the b stack.
- */
-void	sa(t_stack **a, t_stack **b);
-
-/**
- * @brief Swap b's topmost elements.
- * @param a	The top element of the a stack.
- * @param b The top element of the b stack.
- */
-void	sb(t_stack **a, t_stack **b);
-
-/**
- * @brief Swap a's and b's topmost elements.
- * @param a	The top element of the a stack.
- * @param b The top element of the b stack.
- */
-void	ss(t_stack **a, t_stack **b);
-
-/**
- * @brief Pop the top element of b and push it on top of a.
- * @param a	The top element of the a stack.
- * @param b The top element of the b stack.
- */
-void	pa(t_stack **a, t_stack **b);
-
-/**
- * @brief Pop the top element of a and push it on top of b.
- * @param a	The top element of the a stack.
- * @param b The top element of the b stack.
- */
-void	pb(t_stack **a, t_stack **b);
-
-/**
- * @brief Shift up all elements of stack a by 1.
- *
- * The first element becomes the last one.
- * @param a	The top element of the a stack.
- * @param b The top element of the b stack.
- */
-void	ra(t_stack **a, t_stack **b);
-
-/**
- * @brief Shift up all elements of stack b by 1.
- *
- * The first element becomes the last one.
- * @param a	The top element of the a stack.
- * @param b The top element of the b stack.
- */
-void	rb(t_stack **a, t_stack **b);
-
-/**
- * @brief Shift up all elements of both stacks by 1.
- *
- * The first element becomes the last one.
- * @param a	The top element of the a stack.
- * @param b The top element of the b stack.
- */
-void	rr(t_stack **a, t_stack **b);
-
-/**
- * @brief Shift down all elements of stack a by 1.
- *
- * The last element becomes the first one.
- * @param a	The top element of the a stack.
- * @param b The top element of the b stack.
- */
-void	rra(t_stack **a, t_stack **b);
-
-/**
- * @brief Shift down all elements of stack b by 1.
- *
- * The last element becomes the first one.
- * @param a	The top element of the a stack.
- * @param b The top element of the b stack.
- */
-void	rrb(t_stack **a, t_stack **b);
-
-/**
- * @brief Shift down all elements of both stacks by 1.
- *
- * The last element becomes the first one.
- * @param a	The top element of the a stack.
- * @param b The top element of the b stack.
- */
-void	rrr(t_stack **a, t_stack **b);
 
 #endif

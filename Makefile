@@ -15,6 +15,7 @@ BINDIR=.
 SRCS = $(addprefix $(SRCDIR)/,\
 	stack_iter.c\
 	stack_load.c\
+	stack_op.c\
 	stack_push.c\
 	stack_reverse_rotate.c\
 	stack_rotate.c\
