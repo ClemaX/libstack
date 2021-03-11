@@ -10,15 +10,10 @@ void	stack_push(t_stack **top, t_stack *elem)
 
 		if (old_top) // { old_top -> old_top ...}
 		{
-			elem->next = old_top; // { elem -> old_top -> old_top ... }
-			elem->prev = old_top->prev; // { old_top <- elem -> old_top -> old_top ... }
-			old_top->prev = elem; // { old_top <- elem <- old_top <- elem }
-			elem->prev->next = elem;
-		}
-		else
-		{
-			elem->prev = elem; // { elem <- elem ... }
-			elem->next = elem; // { elem -> elem ... }
+			elem->next = old_top; // { elem -> old_top -> old_top ... } next points to old top
+			elem->prev = old_top->prev; // { old_top <- elem -> old_top -> old_top ... } previous points to last elem
+			old_top->prev = elem; // { old_top <- elem <- old_top <- elem } old top previous points to elem
+			elem->prev->next = elem; //  { old_top -> elem <- old_top <- elem } last node points to elem
 		}
 	}
 }
@@ -45,15 +40,18 @@ void	stack_push_back(t_stack **top, t_stack *elem)
 
 t_stack	*stack_pop(t_stack **top)
 {
-	t_stack	*const old_top = *top;
+	t_stack	*const	old_top = *top;
 
-	if (old_top)
+	if (old_top && old_top != old_top->next)
 	{
 		*top = old_top->next;
 		(*top)->prev = old_top->prev;
-		old_top->prev = NULL;
-		old_top->next = NULL;
+		old_top->prev->next = *top;
+		old_top->prev = old_top;
+		old_top->next = old_top;
 	}
+	else
+		*top = NULL;
 	return (old_top);
 }
 
@@ -63,8 +61,8 @@ t_stack	*stack_new(t_stack_val val)
 
 	if (elem)
 	{
-		elem->next = NULL;
-		elem->prev = NULL;
+		elem->next = elem;
+		elem->prev = elem;
 		elem->val = val;
 	}
 	return (elem);
