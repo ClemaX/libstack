@@ -1,7 +1,7 @@
 #ifndef STACKDEF_H
 # define STACKDEF_H
 
-# include <limits.h>
+# include <limits.h> // using CHAR_MAX, CHAR_MIN
 
 # define STACK_VAL_MAX CHAR_MAX
 # define STACK_VAL_MIN CHAR_MIN

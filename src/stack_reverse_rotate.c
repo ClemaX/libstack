@@ -1,4 +1,4 @@
-#include <stack.h>
+#include <stack_op.h>
 
 void	rra(t_stack **a, t_stack **b)
 {
@@ -17,7 +17,7 @@ void	rrb(t_stack **a, t_stack **b)
 void	rrr(t_stack **a, t_stack **b)
 {
 	if (*a)
-		*a = (*a)->next;
+		*a = (*a)->prev;
 	if (*b)
-		*b = (*b)->next;
+		*b = (*b)->prev;
 }

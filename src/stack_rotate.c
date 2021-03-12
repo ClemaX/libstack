@@ -1,4 +1,4 @@
-#include <stack.h>
+#include <stack_op.h>
 
 void	ra(t_stack **a, t_stack **b)
 {

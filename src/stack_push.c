@@ -1,4 +1,5 @@
 #include <stack.h>
+#include <stack_op.h>
 
 void	pa(t_stack **a, t_stack **b)
 {

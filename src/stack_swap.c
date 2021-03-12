@@ -1,8 +1,6 @@
 #include <stack.h>
+#include <stack_op.h>
 
-/**
- * @brief Swap a
- */
 void	sa(t_stack **a, t_stack **b)
 {
 	t_stack	*elem_a;
@@ -18,9 +16,6 @@ void	sa(t_stack **a, t_stack **b)
 	}
 }
 
-/**
- * @brief Swap b
- */
 void	sb(t_stack **a, t_stack **b)
 {
 	t_stack	*elem_a;
@@ -36,9 +31,6 @@ void	sb(t_stack **a, t_stack **b)
 	}
 }
 
-/**
- * @brief Swap a and b
- */
 void	ss(t_stack **a, t_stack **b)
 {
 	t_stack	*old_top;
