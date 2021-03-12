@@ -43,9 +43,9 @@ t_stack			*stack_load(char const **values)
 		value = stack_eval(&current);
 		if (*current)
 		{
-			ft_puts(2, "stack_load: Invalid argument: ");
+			write(2, "stack_load: Invalid argument: '", 31);
 			ft_puts(2, current);
-			write (2, "\n", 1);
+			write(2, "'\n", 2);
 			stack_clear(&stack);
 			return (stack);
 		}
